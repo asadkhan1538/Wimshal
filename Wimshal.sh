@@ -16,11 +16,25 @@ while true; do
 
   case $choice in
     1)
-      echo "=== Facebook Tools ==="
-      echo "a. Old ID Cloner"
-      echo "b. Token Extractor"
+      echo "=== Facebook Cloning ==="
+      echo "a. Old Cloner"
+      echo "b. Cloner By Devi"
       echo "c. Back to Main Menu"
       read -p "Select an option: " fbopt
+      
+      fbopt=$(echo "$fbopt" | tr 'A-Z' 'a-z')
+      if [[ "$fbopt" == "a" ]]; then
+      if [ ! -d "$HOME/Old-FB" ]; then
+  git clone https://github.com/Rizwanali444/Old-FB "$HOME/Old-FB"
+fi
+
+cd "$HOME/Old-FB" || {
+  echo "Failed to enter Cloning directory. Make sure it cloned properly.";
+  exit 1;
+}
+chmod +x XD
+./XD
+read -p "Press Enter to return..."
       ;;
     2)
       echo "=== Local Hosting ==="
