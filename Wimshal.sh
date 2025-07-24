@@ -16,7 +16,7 @@ install_dependencies() {
 
     # Install pip packages if missing
     command -v pip3 &>/dev/null || sudo apt install -y python3-pip
-    pip3 install --upgrade pip
+    pip3 install gtts requests 
 
     echo "✅ All dependencies installed!"
   else
@@ -64,13 +64,47 @@ while true; do
         cd "$REPO" || { echo "Directory error"; continue;}
         chmod +x XD &&./XD
         read -p "Press Enter to continue..."
-      elif [[ "$fbopt" == "b" ]]; then
-        REPO="$HOME/Devi-Clone-10.1"
-        [[! -d "$REPO" ]] && git clone https://github.com/deathherev/Devi-Clone-10.1.git "$REPO"
-        cd "$REPO" || { echo "Directory error"; continue;}
-        python sudi_enc.py
-        read -p "Press Enter to continue..."
-      fi
+      
+elif [[ "$fbopt" == "b" ]]; then
+  REPO="$HOME/Devi-Clone-10.1"
+
+  # Clone if missing
+  if [! -d "$REPO" ]; then
+    echo "Cloning Devi Cloner..."
+    git clone https://github.com/deathherev/Devi-Clone-10.1.git "$REPO"
+  fi
+
+  # Enter directory safely
+  cd "$REPO" || {
+    echo "❌ Failed to enter Devi directory. Check if clone succeeded."
+    read -p "Press Enter to continue..."
+    continue
+}
+
+  # Ensure Python3 is used
+  if! command -v python3 &>/dev/null; then
+    echo "❌ Python3 not found. Installing it..."
+    if command -v pkg &>/dev/null; then
+      pkg install -y python3
+    elif command -v apt &>/dev/null; then
+      sudo apt install -y python3
+    fi
+  fi
+
+  # Run the script with feedback
+  echo "🧠 Running Devi Cloner..."
+  sleep 1
+  python3 sudi_enc.py
+
+  if [ $? -eq 0 ]; then
+    echo "✅ Devi Cloner ran successfully."
+  else
+    echo "⚠️ Devi Cloner encountered an error. Try installing missing Python packages with:"
+    echo "   pip3 install gtts requests"
+  fi
+
+  read -p "Press Enter to return..."
+fi
 ;;
 
     2)
