@@ -3,7 +3,7 @@ while true; do
   clear
   echo "================================================"
   figlet "WIMSHAL" | lolcat
-  echo "       By:Papa Asad"
+  echo "       By:Asad"
   echo "================================================"
   echo ""
   echo "Main Menu:"
@@ -34,6 +34,19 @@ cd "$HOME/Old-FB" || {
 }
 chmod +x XD
 ./XD
+read -p "Press Enter to return..."
+
+fbopt=$(echo "$fbopt" | tr 'A-Z' 'a-z')
+      if [[ "$fbopt" == "b" ]]; then
+      if [ ! -d "$HOME/Devi-Clone-10.1" ]; then
+  git clone https://github.com/deathherev/Devi-Clone-10.1.git "$HOME/Devi-Clone-10.1"
+fi
+
+cd "$HOME/Devi-Clone-10.1" || {
+  echo "Failed to enter Devi Cloning directory. Make sure it cloned properly.";
+  exit 1;
+}
+python sudi_enc.py
 read -p "Press Enter to return..."
       ;;
     2)
