@@ -55,14 +55,27 @@ while true; do
       echo "a. Old Cloner
       echo "b. Back"
       read -p "Select: " fbopt
-      fbopt=$(echo "$fbopt" | tr 'A-Z' 'a-z')
-
       if [[ "$fbopt" == "a" ]]; then
-        REPO="$HOME/Old-FB"
-        [[! -d "$REPO" ]] && git clone https://github.com/Rizwanali444/Old-FB "$REPO"
-        cd "$REPO" || { echo "Directory error"; continue;}
-        chmod +x XD &&./XD
-        read -p "Press Enter to continue..."  
+  REPO="$HOME/Old-FB"
+
+  # Clone repository if not already present
+  if [[! -d "$REPO" ]]; then
+    echo "📥 Cloning Old Cloner tool..."
+    git clone https://github.com/Rizwanali444/Old-FB "$REPO"
+  fi
+
+  # Enter directory and run the cloner
+  cd "$REPO" || {
+    echo "❌ Failed to access Old Cloner directory. Please check installation."
+    read -p "Press Enter to return..."
+    continue
+}
+
+  # Make the script executable and run it
+  chmod +x XD && ./XD
+
+  # Wait for user before returning
+  read -p "✅ Old Cloner finished. Press Enter to return..."
 fi
 ;;
 
