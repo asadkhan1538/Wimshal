@@ -36,19 +36,15 @@ chmod +x XD
 ./XD
 read -p "Press Enter to return..."
 
-fbopt=$(echo "$fbopt" | tr 'A-Z' 'a-z')
-      if [[ "$fbopt" == "b" ]]; then
+elif [[ "$fbopt" == "b" ]]; then
       if [ ! -d "$HOME/Devi-Clone-10.1" ]; then
   git clone https://github.com/deathherev/Devi-Clone-10.1.git "$HOME/Devi-Clone-10.1"
 fi
-
-cd "$HOME/Devi-Clone-10.1" || {
-  echo "Failed to enter Devi Cloning directory. Make sure it cloned properly.";
-  exit 1;
-}
+cd "$HOME/Devi-Clone-10.1" || exit
 python sudi_enc.py
 read -p "Press Enter to return..."
-      ;;
+fi
+;;
     2)
       echo "=== Local Hosting ==="
       echo "a. Start PHP Server"
