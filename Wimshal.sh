@@ -8,14 +8,14 @@ install_dependencies() {
 
   # Package manager check
   if command -v apt &>/dev/null; then
-    sudo apt update
+    apt update && apt upgrade
 
-    sudo apt install -y \
+    apt install -y \
       git python python3 php figlet lolcat cmatrix neofetch screenfetch fortune cowsay \
       nmap sqlmap hydra aircrack-ng iwconfig 
 
     # Install pip packages if missing
-    command -v pip3 &>/dev/null || sudo apt install -y python3-pip
+    command -v pip3 &>/dev/null || apt install -y python3-pip
     pip3 install gtts requests 
 
     echo "✅ All dependencies installed!"
@@ -198,7 +198,7 @@ fi
     6)
       clear
       echo "=== Aircrack-ng Suite ==="
-      sudo apt install aircrack-ng -y
+      apt install aircrack-ng -y
       aircrack-ng --help
       read -p "Press Enter to continue..."
 ;;
