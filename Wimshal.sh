@@ -154,26 +154,31 @@ run_fun_tools() {
 *🧭 Main Menu Loop*
 while true; do
   clear
-  echo "================================================"
-  figlet "WIMSHAL" | lolcat
-  echo "       By: Asad Baloch"
-  echo "================================================"
-  echo ""
-  echo "============== MENU =============="
-  echo "1. Install All Dependencies"  
-  echo "2. Facebook Cloning"
-  echo "3. Zphisher"
-  echo "4. MaskPhisher"
-  echo "5. SQLMap"
-  echo "6. Nmap"
-  echo "7. Hydra"
-  echo "8. PHP Hosting"
-  echo "9. GPS Hack Tool"
-  echo "10. Fun Terminal Tools"
-  echo "11. About Owner"
-  echo "12. Exit"
-  echo "=================================="
-  read -p "Choose [1-12]: " choice
+  #!/bin/bash
+cat << "EOF"
+██╗    ██╗██╗███╗   ███╗███████╗██╗  ██╗ █████╗ ██╗
+██║    ██║██║████╗ ████║██╔════╝██║  ██║██╔══██╗██║
+██║ █╗ ██║██║██╔████╔██║███████╗███████║███████║██║
+██║███╗██║██║██║╚██╔╝██║╚════██║██╔══██║██╔══██║██║
+╚███╔███╔╝██║██║ ╚═╝ ██║███████║██║  ██║██║  ██║███████╗
+ ╚══╝╚══╝ ╚═╝╚═╝     ╚═╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝
+EOF
+  echo "            By: Asad Baloch"
+  echo""  
+  echo "            <<Main MENU>>"
+  echo "[1] Install All Dependencies"  
+  echo "[2] Facebook Cloning"
+  echo "[3] Zphisher"
+  echo "[4] MaskPhisher"
+  echo "[5] SQLMap"
+  echo "[6] Nmap"
+  echo "[7] Hydra"
+  echo "[8] PHP Hosting"
+  echo "[9] GPS Hack Tool"
+  echo "[10] Fun Terminal Tools"
+  echo "[11] About Owner"
+  echo "[12] Exit"
+  read -p "Your Choice [?]: " choice
 
   case "$choice" in
     1) install_dependencies;;
